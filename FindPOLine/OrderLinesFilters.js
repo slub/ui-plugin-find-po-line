@@ -28,6 +28,7 @@ import {
   FILTERS,
   PAYMENT_STATUS_FILTER_OPTIONS,
   RECEIPT_STATUS_FILTER_OPTIONS,
+  TRANSMISSION_METHOD_FILTER_OPTIONS,
 } from './constants';
 import { LinkedPackagePOLineFilter } from './LinkedPackagePOLineFilter';
 import { getDateRangeValueAsString } from './utils';
@@ -334,6 +335,15 @@ export function OrderLinesFilters({
         name={FILTERS.EXPORT_DATE}
         onChange={handleDateRangeFilter}
         disabled={disabled}
+      />
+      <AcqCheckboxFilter
+        activeFilters={activeFilters[FILTERS.TRANSMISSION_METHOD]}
+        disabled={disabled}
+        id={FILTERS.TRANSMISSION_METHOD}
+        labelId="ui-plugin-find-po-line.filter.transmissionMethod"
+        name={FILTERS.TRANSMISSION_METHOD}
+        onChange={adaptedApplyFilters}
+        options={TRANSMISSION_METHOD_FILTER_OPTIONS}
       />
       <PluggableUserFilter
         id={FILTERS.CREATED_BY}

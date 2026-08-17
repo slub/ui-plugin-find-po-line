@@ -42,6 +42,7 @@ export const FILTERS = {
   SUBSCRIPTION_TO: 'subscriptionTo',
   SUFFIX: 'purchaseOrder.poNumberSuffix',
   TAGS: 'tags',
+  TRANSMISSION_METHOD: 'lastExport.transmissionMethod',
   TRIAL: 'trial',
   VENDOR: 'purchaseOrder.vendor',
   CREATED_BY: 'metadata.createdByUserId',
@@ -58,5 +59,23 @@ export const RECEIPT_STATUS_FILTER_OPTIONS = Object.keys(RECEIPT_STATUS).map(sta
   value: RECEIPT_STATUS[status],
   label: <FormattedMessage id={`ui-orders.receipt_status.${status}`} />,
 }));
+
+// Values must match the enum of `lastExport.transmissionMethod` in the PO line
+// schema exactly; the CQL match is case-sensitive and unquoted drift would
+// silently return nothing.
+export const TRANSMISSION_METHOD_FILTER_OPTIONS = [
+  {
+    value: 'Email',
+    labelId: 'ui-plugin-find-po-line.filter.transmissionMethod.email',
+  },
+  {
+    value: 'FTP',
+    labelId: 'ui-plugin-find-po-line.filter.transmissionMethod.ftp',
+  },
+  {
+    value: 'File download',
+    labelId: 'ui-plugin-find-po-line.filter.transmissionMethod.fileDownload',
+  },
+];
 
 export const QUALIFIER_SEPARATOR = ' ';
