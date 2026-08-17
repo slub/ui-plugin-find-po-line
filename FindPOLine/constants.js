@@ -21,6 +21,7 @@ export const FILTERS = {
   EXPECTED_ACTIVATION_DATE: 'expectedActivation',
   EXPECTED_RECEIPT_DATE: 'expectedReceiptDate',
   EXPENSE_CLASS: 'expenseClass',
+  EXPORTED: 'exported',
   EXPORT_DATE: 'lastEDIExportDate',
   FUND_CODE: 'fundCode',
   FUND_DISTRIBUTION: 'fundDistribution',

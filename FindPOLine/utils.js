@@ -41,6 +41,23 @@ export const getDateRangeValueAsString = (filterValue = '') => {
   return filterValue;
 };
 
+const EXPORTED_QUERY = {
+  true: `${FILTERS.EXPORT_DATE}=""`,
+  false: `(cql.allRecords=1 NOT ${FILTERS.EXPORT_DATE}="")`,
+};
+
+/**
+ * Both options selected (or neither) means "no restriction": returning
+ * undefined leaves the clause out, as `buildFilterQuery` drops falsy results.
+ */
+export const buildExportedQuery = (filterValue) => {
+  const values = [...new Set([].concat(filterValue || []))];
+
+  if (values.length !== 1) return undefined;
+
+  return EXPORTED_QUERY[values[0]];
+};
+
 const buildEqualCqlQuery = (sIndex, sQuery) => new CQLBuilder().equal(sIndex, sQuery).build();
 
 const buildMultiOptionCqlEqualQuery = (sIndex, sQuery) => {
@@ -72,6 +89,7 @@ export const buildOrderLinesQuery = (
     queryParams,
     searchFn,
     {
+      [FILTERS.EXPORTED]: buildExportedQuery,
       [FILTERS.EXPORT_DATE]: buildDateRangeQuery.bind(null, FILTERS.EXPORT_DATE),
       [FILTERS.DATE_CREATED]: buildDateTimeRangeQuery.bind(null, FILTERS.DATE_CREATED),
       [FILTERS.DATE_UPDATED]: buildDateTimeRangeQuery.bind(null, FILTERS.DATE_UPDATED),

@@ -319,6 +319,14 @@ export function OrderLinesFilters({
         name={FILTERS.RECEIPT_DUE}
         onChange={handleDateRangeFilter}
       />
+      <BooleanFilter
+        activeFilters={activeFilters[FILTERS.EXPORTED]}
+        disabled={disabled}
+        id={FILTERS.EXPORTED}
+        labelId="ui-plugin-find-po-line.filter.exported"
+        name={FILTERS.EXPORTED}
+        onChange={adaptedApplyFilters}
+      />
       <AcqDateRangeFilter
         id={FILTERS.EXPORT_DATE}
         activeFilters={getActiveDateRangeFilters(FILTERS.EXPORT_DATE)}

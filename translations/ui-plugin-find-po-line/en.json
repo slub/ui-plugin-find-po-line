@@ -3,6 +3,8 @@
 
   "addPOLine": "Add order lines",
 
+  "filter.exported": "Exported",
+
   "filter.linkedPackagePOLine.accordion.label": "Linked package POL",
   "filter.linkedPackagePOLine.lookup.label": "Linked package POL lookup",
   
